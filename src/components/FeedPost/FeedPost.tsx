@@ -9,6 +9,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Feather from "react-native-vector-icons/Ionicons";
 import Comment from "../Comment";
 import DoublePressable from "../DoublePressable";
+import Carousel from "../Carousel";
 
 import styles from "./styles";
 import { IPost } from "../../types/models";
@@ -27,6 +28,24 @@ const FeedPost = ({post} : IFeedPost) => {
   const toggleLike = () => {
     setIsLiked(v => !v)
   }
+  let content = null ;
+  if(post.image){
+    content= (
+      <DoublePressable onDoublePress={toggleLike}>
+
+      <Image style={styles.image}
+      source={{
+        uri:post.image,
+      }}
+       />
+
+      </DoublePressable>
+    )
+  } else if (post.images){
+    content= (
+      <Carousel images={post.images} onDoublePress={toggleLike}/>
+    )
+  }
   return(
     <View style={styles.post}>
       {/* Header */}
@@ -40,13 +59,8 @@ const FeedPost = ({post} : IFeedPost) => {
       </View>
 
       {/* Post */}
-      <DoublePressable onDoublePress={toggleLike}>
-      <Image style={styles.image}
-      source={{
-        uri:post.image,
-      }}
-       />
-      </DoublePressable>
+        {content}
+
       {/* Footer */}
       <View style={styles.footer}>
          <View style={styles.iconContainer}>
