@@ -19,7 +19,7 @@ const HomeScreen = () => {
   return(
       <FlatList
           data={posts}
-          renderItem={({item}) => <FeedPost post={item} />}
+          renderItem={({item}) => <FeedPost post={item} isVisible={activePostId === item.id} />}
           showsVerticalScrollIndicator={false}
           viewabilityConfig={viewabilityConfig}
           onViewableItemsChanged={onViewableItemsChanged.current}
