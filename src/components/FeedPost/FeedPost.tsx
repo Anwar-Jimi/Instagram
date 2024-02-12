@@ -10,15 +10,17 @@ import Feather from "react-native-vector-icons/Ionicons";
 import Comment from "../Comment";
 import DoublePressable from "../DoublePressable";
 import Carousel from "../Carousel";
+import VideoPlayer from "../VideoPlayer";
 
 import styles from "./styles";
 import { IPost } from "../../types/models";
 
 
 interface IFeedPost {
-    post: IPost
+    post: IPost;
+    isVisible: boolean;
 }
-const FeedPost = ({post} : IFeedPost) => {
+const FeedPost = ({post, isVisible} : IFeedPost) => {
   const [isDescriptionExpanded, setisDescriptionExpanded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -32,19 +34,23 @@ const FeedPost = ({post} : IFeedPost) => {
   if(post.image){
     content= (
       <DoublePressable onDoublePress={toggleLike}>
-
       <Image style={styles.image}
       source={{
         uri:post.image,
       }}
        />
-
       </DoublePressable>
     )
   } else if (post.images){
     content= (
       <Carousel images={post.images} onDoublePress={toggleLike}/>
     )
+  } else if(post.video){
+    content= (
+      <DoublePressable onDoublePress={toggleLike}>
+        <VideoPlayer uri={post.video} paused={!isVisible}/>
+      </DoublePressable>
+      )
   }
   return(
     <View style={styles.post}>
