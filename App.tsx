@@ -5,20 +5,13 @@ import ProfileScreen from "./src/screens/ProfileScreen";
 import EditeProfileScreen from "./src/screens/EditeProfileScreen";
 import PostUploadScreen from "./src/screens/PostUploadScreen";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import Navigation from "./src/navigation";
 
 const App = () => {
   return(
-    <View style={styles.app}>
-      <SafeAreaProvider>
-      <PostUploadScreen />
-      </SafeAreaProvider>
-    </View>
+    <Navigation />
   );
 }
 
-const styles = StyleSheet.create ({
-  app : {
-    flex: 1,
-  },
-})
 export default App;
