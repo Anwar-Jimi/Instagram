@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Pressable, Text, View, Image } from "react-native";
 
 import colors from "../../theme/colors";
-import fonts from "../../theme/fonts";
 import Entypo from "react-native-vector-icons/Entypo";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -11,6 +10,7 @@ import Comment from "../Comment";
 import DoublePressable from "../DoublePressable";
 import Carousel from "../Carousel";
 import VideoPlayer from "../VideoPlayer";
+import { useNavigation } from '@react-navigation/native';
 
 import styles from "./styles";
 import { IPost } from "../../types/models";
@@ -23,7 +23,10 @@ interface IFeedPost {
 const FeedPost = ({post, isVisible} : IFeedPost) => {
   const [isDescriptionExpanded, setisDescriptionExpanded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-
+  const navigation = useNavigation();
+  const navigateToUser = () => {
+    navigation.navigate('UserProfile');
+  }
   const toggleDescriptionExpanded = () => {
     setisDescriptionExpanded(v => !v);
   }
@@ -60,7 +63,7 @@ const FeedPost = ({post, isVisible} : IFeedPost) => {
         source={{
           uri: post.user.image,
         }}/>
-        <Text style={styles.userName}>{post.user.username}</Text>
+        <Text onPress={navigateToUser} style={styles.userName}>{post.user.username}</Text>
         <Entypo name="dots-three-horizontal" size={16} style={styles.threeDots}/>
       </View>
 
