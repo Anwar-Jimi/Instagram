@@ -12,7 +12,7 @@ const Navigation = () => {
         <NavigationContainer>
 
             <Stack.Navigator
-              initialRouteName='UserProfile'
+              initialRouteName='Feed'
               screenOptions={{headerShown: true}}>
 
                 <Stack.Screen

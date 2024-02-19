@@ -25,7 +25,7 @@ const FeedPost = ({post, isVisible} : IFeedPost) => {
   const [isLiked, setIsLiked] = useState(false);
   const navigation = useNavigation();
   const navigateToUser = () => {
-    navigation.navigate('UserProfile');
+    navigation.navigate('UserProfile', {userId: post.user.id});
   }
   const toggleDescriptionExpanded = () => {
     setisDescriptionExpanded(v => !v);
