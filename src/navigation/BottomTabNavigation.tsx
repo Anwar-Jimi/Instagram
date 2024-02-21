@@ -5,6 +5,7 @@ import PostUploadScreen from "../screens/PostUploadScreen"
 import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 import FontAwesome from "react-native-vector-icons/FontAwesome"
 import colors from "../theme/colors"
+import HomeStackNavigator from "./HomeStackNavigator"
 
 const Tab = createBottomTabNavigator()
 const BottomTabNavigation = () => {
@@ -15,9 +16,10 @@ const BottomTabNavigation = () => {
         tabBarActiveTintColor: colors.black,
        }}>
         <Tab.Screen
-          name="Feed"
-          component={HomeScreen}
+          name="HomeStack"
+          component={HomeStackNavigator}
           options={{
+            headerShown: false,
             tabBarIcon: ({color, size}) => (
                 <MaterialIcons name="home-filled" size={size} color={color} />
             ),
@@ -34,6 +36,7 @@ const BottomTabNavigation = () => {
            name="Upload"
            component={PostUploadScreen}
            options={{
+            headerShown: false,
             tabBarIcon: ({color, size}) => (
                 <MaterialIcons name="upload" size={size} color={color} />
             ),

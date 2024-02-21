@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Image } from 'react-native';
 import logo from "../assets/images/logo.png";
 import BottomTabNavigation from './BottomTabNavigation';
+import CommentsScreen from '../screens/CommentsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,19 +21,11 @@ const Navigation = () => {
                     component={BottomTabNavigation}
                     options={{headerShown: false}}/>
                 <Stack.Screen
-                   name='UserProfile'
-                   component={ProfileScreen}
-                   options={{title: "Profile"}}
+                   name='Comments'
+                   component={CommentsScreen}
                 />
             </Stack.Navigator>
         </NavigationContainer>
     );
 }
-
-const HeaderTitle = () => {
-    return(
-        <Image source={logo} resizeMode='contain' style={{width: 150, height: 45}}/>
-    );
-}
-
 export default Navigation;
