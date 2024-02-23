@@ -19,6 +19,11 @@ export type MyProfileNavigationProp = BottomTabNavigationProp<
   'MyProfile'
 >;
 
+export type MyProfileRouteProp = RouteProp<
+  BottomTabNavigatorParamList,
+  'MyProfile'
+>;
+
 export type HomeStackNavigatorParamList = {
     Feed: undefined;
     UserProfile: {userId: string};
