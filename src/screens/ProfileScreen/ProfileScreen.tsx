@@ -10,7 +10,7 @@ const ProfileScreen = () => {
   const navigation = useNavigation<UserProfileNavigationProp | ProfileNavigationProp>();
 
   const userId = route.params?.userId;
-
+  console.warn("user", userId)
   return (
     <FeedGridView
        data={user.posts}
