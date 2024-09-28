@@ -1,12 +1,8 @@
-import { StyleSheet, View, FlatList} from "react-native";
-import HomeScreen from "./src/screens/HomeScreen/HomeScreen";
-import CommentsScreen from "./src/screens/CommentsScreen";
-import ProfileScreen from "./src/screens/ProfileScreen";
-import EditeProfileScreen from "./src/screens/EditeProfileScreen";
-import PostUploadScreen from "./src/screens/PostUploadScreen";
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NavigationContainer } from '@react-navigation/native';
 import Navigation from "./src/navigation";
+import {Amplify} from "aws-amplify";
+import config from "./src/aws-exports";
+
+Amplify.configure(config)
 
 const App = () => {
   return(
